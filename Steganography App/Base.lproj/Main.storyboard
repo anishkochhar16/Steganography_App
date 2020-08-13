@@ -1,24 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sFR-JY-LQ1">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="Steganography_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT2-DA-cJA">
+                                <rect key="frame" x="180" y="481" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Decode"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-0g-4Tl">
+                                <rect key="frame" x="181" y="358" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Encode"/>
+                                <connections>
+                                    <segue destination="Udc-FP-7fP" kind="show" id="qlD-pq-PKW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="h7q-tz-Wif"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="125.89285714285714"/>
+        </scene>
+        <!--Encode-->
+        <scene sceneID="4Hf-PW-Ohs">
+            <objects>
+                <viewController id="Udc-FP-7fP" customClass="EncodeViewController" customModule="Steganography_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wdO-ef-Cf6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Ksy-qu-kQJ">
+                                <rect key="frame" x="20" y="188" width="374" height="259.5"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ksy-qu-kQJ" secondAttribute="height" multiplier="375:260" id="SNI-YD-Tum"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Obl-U6-7Ac" appends="YES" id="D4N-JG-mgo"/>
+                                </connections>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ip9-sK-N7G">
+                                <rect key="frame" x="25" y="477.5" width="364" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="pja-c7-78c"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="n7R-n3-Ztr" appends="YES" id="Xrk-hk-oFg"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="centerX" secondItem="FB7-ok-234" secondAttribute="centerX" id="1PW-Ca-ifa"/>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="Ksy-qu-kQJ" secondAttribute="bottom" constant="30" id="7xW-k4-YVa"/>
+                            <constraint firstItem="Ksy-qu-kQJ" firstAttribute="centerX" secondItem="FB7-ok-234" secondAttribute="centerX" id="AMA-nM-fJM"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ip9-sK-N7G" secondAttribute="bottom" constant="20" id="L58-AV-Oxk"/>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FB7-ok-234" secondAttribute="top" constant="20" id="PwW-1P-t1L"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="trailing" secondItem="ip9-sK-N7G" secondAttribute="trailing" constant="25" id="ReG-37-clP"/>
+                            <constraint firstItem="Ksy-qu-kQJ" firstAttribute="top" secondItem="FB7-ok-234" secondAttribute="top" constant="100" id="ZRX-Zl-7Uf"/>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="FB7-ok-234" secondAttribute="top" priority="999" constant="40" identifier="textField-Top" id="dh2-B9-02C"/>
+                            <constraint firstItem="Ksy-qu-kQJ" firstAttribute="leading" secondItem="FB7-ok-234" secondAttribute="leading" constant="20" id="vbe-Uf-rgf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FB7-ok-234"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Encode" id="D2M-WK-L2D"/>
+                    <connections>
+                        <outlet property="photoView" destination="Ksy-qu-kQJ" id="bMD-VB-1Lw"/>
+                        <outlet property="textView" destination="ip9-sK-N7G" id="LBx-us-EEW"/>
+                        <outlet property="textViewHeight" destination="pja-c7-78c" id="gBD-tB-lBi"/>
+                        <outlet property="textViewToPhoto" destination="7xW-k4-YVa" id="pqK-QX-Kkj"/>
+                        <outlet property="textViewToTop" destination="dh2-B9-02C" id="JMR-1w-gXE"/>
+                        <outlet property="textViewTrailing" destination="ReG-37-clP" id="ATB-R6-sIb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggM-UF-g3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Obl-U6-7Ac">
+                    <connections>
+                        <action selector="selectPhoto:" destination="Udc-FP-7fP" id="5NK-qc-VMn"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="n7R-n3-Ztr">
+                    <connections>
+                        <action selector="enlargeTextView:" destination="Udc-FP-7fP" id="T9I-aO-uJ2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1832" y="124"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gZ7-Bf-dli">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sFR-JY-LQ1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wHf-nw-lcz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="K7a-NG-zcC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CW-eP-D0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
 </document>
