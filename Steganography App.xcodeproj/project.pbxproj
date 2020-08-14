@@ -97,10 +97,10 @@
 			children = (
 				102C75AE24E55B2300217EED /* AppDelegate.swift */,
 				102C75B024E55B2300217EED /* SceneDelegate.swift */,
+				102C75D224E5EACC00217EED /* TextViewExtension.swift */,
 				102C75B224E55B2300217EED /* IntroViewController.swift */,
 				102C75D024E5C75300217EED /* EncodeViewController.swift */,
 				102C75B424E55B2300217EED /* Main.storyboard */,
-				102C75D224E5EACC00217EED /* TextViewExtension.swift */,
 				102C75B724E55B2800217EED /* Assets.xcassets */,
 				102C75B924E55B2800217EED /* LaunchScreen.storyboard */,
 				102C75BC24E55B2800217EED /* Info.plist */,

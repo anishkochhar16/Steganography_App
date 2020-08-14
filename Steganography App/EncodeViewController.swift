@@ -17,14 +17,64 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var photoClear: UIButton!
+    @IBOutlet weak var textClear: UIButton!
+    @IBOutlet weak var encodeButton: UIButton!
+    
     
     let placeholderMessage = "Enter message to hide..."
+    var photoSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupButtons()
+        
         self.textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         setupTextView()
+    }
+    
+    func setupButtons() {
+        // Both Clear buttons have a blur and a shadow
+        photoClear.backgroundColor = .clear
+        photoClear.layer.cornerRadius = 5
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blur.frame = photoClear.bounds
+        blur.isUserInteractionEnabled = false
+        blur.layer.cornerRadius = 5
+        blur.clipsToBounds = true
+        photoClear.addSubview(blur)
+        photoClear.layer.shadowOpacity = 0.4
+        photoClear.layer.shadowOffset = CGSize(width: 3, height: 1)
+        photoClear.layer.shadowRadius = 5
+        
+        textClear.backgroundColor = .clear
+        textClear.layer.cornerRadius = 5
+        let blur2 = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blur2.frame = textClear.bounds
+        blur2.isUserInteractionEnabled = false
+        blur2.layer.cornerRadius = 5
+        blur2.clipsToBounds = true
+        textClear.addSubview(blur2)
+        textClear.layer.shadowOpacity = 0.4
+        textClear.layer.shadowOffset = CGSize(width: 3, height: 1)
+        textClear.layer.shadowRadius = 5
+        
+        // Encode button
+        encodeButton.backgroundColor = .clear
+        encodeButton.layer.cornerRadius = 5
+        let blur3 = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blur3.frame = encodeButton.bounds
+        blur3.isUserInteractionEnabled = true
+        blur3.layer.cornerRadius = 5
+        blur3.clipsToBounds = true
+        encodeButton.addSubview(blur3)
+        encodeButton.layer.shadowOpacity = 0.4
+        encodeButton.layer.shadowOffset = CGSize(width: 3, height: 1)
+        encodeButton.layer.shadowRadius = 5
+    }
+    
+    @IBAction func encode(_ sender: Any) {
     }
     
     @objc func tapDone(sender: Any) {
@@ -53,7 +103,7 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         textView.textColor = .lightGray
     }
     
-    // MARK: Select Text View
+    // MARK: Select TextView
     @IBAction func enlargeTextView(_ sender: UITapGestureRecognizer) {
         
         textView.becomeFirstResponder()
@@ -63,13 +113,19 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.textViewToTop.priority = .defaultHigh
             self.textViewHeight.constant = 350
             self.view.layoutIfNeeded()
-            if self.textView.textColor == UIColor.lightGray {
-                self.textView.text = ""
-                self.textView.textColor = .black
-            }
         }
         
+        if self.textView.textColor == UIColor.lightGray {
+            self.textView.text = ""
+            self.textView.textColor = .black
+        }
     }
+    
+    @IBAction func clearTextView(_ sender: Any) {
+        self.textView.text = ""
+        self.textView.textColor = .black
+    }
+    
     
     // MARK: Select Photo
     @IBAction func selectPhoto(_ sender: UITapGestureRecognizer) {
@@ -79,6 +135,12 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
         present(imagePickerController, animated: true)
     }
+    
+    @IBAction func clearPhoto(_ sender: Any) {
+        photoView.image = UIImage(named: "defaultPhoto")
+        photoSelected = false
+    }
+    
 
     // MARK: ImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -88,6 +150,7 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { fatalError("Did not pick an image. Received \(info)") }
         photoView.image = selectedImage
+        photoSelected = true
 
         dismiss(animated: true, completion: nil)
     }

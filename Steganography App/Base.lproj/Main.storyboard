@@ -46,6 +46,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="w0Z-d1-8zq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Ksy-qu-kQJ">
                                 <rect key="frame" x="20" y="188" width="374" height="259.5"/>
                                 <gestureRecognizers/>
@@ -56,8 +59,19 @@
                                     <outletCollection property="gestureRecognizers" destination="Obl-U6-7Ac" appends="YES" id="D4N-JG-mgo"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-yO-2Ws">
+                                <rect key="frame" x="20" y="158" width="50" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6qs-JA-U6H"/>
+                                    <constraint firstAttribute="height" constant="24" id="ekf-Ft-uuW"/>
+                                </constraints>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearPhoto:" destination="Udc-FP-7fP" eventType="touchUpInside" id="Bvd-G4-grt"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ip9-sK-N7G">
-                                <rect key="frame" x="25" y="477.5" width="364" height="120"/>
+                                <rect key="frame" x="20" y="482.5" width="374" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -70,24 +84,59 @@
                                     <outletCollection property="gestureRecognizers" destination="n7R-n3-Ztr" appends="YES" id="Xrk-hk-oFg"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-cD-qwR">
+                                <rect key="frame" x="130" y="660" width="154" height="30"/>
+                                <state key="normal" title="Encode">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="encode:" destination="Udc-FP-7fP" eventType="touchUpInside" id="44p-Ia-QPF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-fK-Kfa">
+                                <rect key="frame" x="20" y="455" width="50" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="G7X-WY-vMV"/>
+                                    <constraint firstAttribute="height" constant="24" id="PXA-SF-MjY"/>
+                                </constraints>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearTextView:" destination="Udc-FP-7fP" eventType="touchUpInside" id="SVZ-Mq-8U5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ip9-sK-N7G" firstAttribute="centerX" secondItem="FB7-ok-234" secondAttribute="centerX" id="1PW-Ca-ifa"/>
-                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="Ksy-qu-kQJ" secondAttribute="bottom" constant="30" id="7xW-k4-YVa"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="trailing" secondItem="QgC-cD-qwR" secondAttribute="trailing" constant="130" id="6oy-ei-SXO"/>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="Ksy-qu-kQJ" secondAttribute="bottom" constant="35" id="7xW-k4-YVa"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QgC-cD-qwR" secondAttribute="bottom" constant="20" id="9wx-12-uV8"/>
                             <constraint firstItem="Ksy-qu-kQJ" firstAttribute="centerX" secondItem="FB7-ok-234" secondAttribute="centerX" id="AMA-nM-fJM"/>
-                            <constraint firstItem="FB7-ok-234" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ip9-sK-N7G" secondAttribute="bottom" constant="20" id="L58-AV-Oxk"/>
+                            <constraint firstItem="QgC-cD-qwR" firstAttribute="top" secondItem="ip9-sK-N7G" secondAttribute="bottom" constant="57.5" id="CoD-qc-KrV"/>
+                            <constraint firstItem="w0Z-d1-8zq" firstAttribute="width" secondItem="FB7-ok-234" secondAttribute="width" id="Gfp-jV-x2v"/>
                             <constraint firstItem="ip9-sK-N7G" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FB7-ok-234" secondAttribute="top" constant="20" id="PwW-1P-t1L"/>
-                            <constraint firstItem="FB7-ok-234" firstAttribute="trailing" secondItem="ip9-sK-N7G" secondAttribute="trailing" constant="25" id="ReG-37-clP"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="trailing" secondItem="ip9-sK-N7G" secondAttribute="trailing" constant="20" id="ReG-37-clP"/>
+                            <constraint firstItem="QgC-cD-qwR" firstAttribute="centerX" secondItem="w0Z-d1-8zq" secondAttribute="centerX" id="VNl-CA-b0t"/>
                             <constraint firstItem="Ksy-qu-kQJ" firstAttribute="top" secondItem="FB7-ok-234" secondAttribute="top" constant="100" id="ZRX-Zl-7Uf"/>
                             <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="FB7-ok-234" secondAttribute="top" priority="999" constant="40" identifier="textField-Top" id="dh2-B9-02C"/>
+                            <constraint firstItem="w0Z-d1-8zq" firstAttribute="leading" secondItem="FB7-ok-234" secondAttribute="leading" id="hO8-v1-OHN"/>
+                            <constraint firstItem="w0Z-d1-8zq" firstAttribute="height" secondItem="FB7-ok-234" secondAttribute="height" multiplier="1.15762" id="jd1-rR-4lc"/>
+                            <constraint firstItem="w0Z-d1-8zq" firstAttribute="bottom" secondItem="FB7-ok-234" secondAttribute="bottom" constant="34" id="jjx-8d-NRq"/>
+                            <constraint firstItem="ip9-sK-N7G" firstAttribute="top" secondItem="bK2-fK-Kfa" secondAttribute="bottom" constant="3.5" id="m3m-Rg-892"/>
+                            <constraint firstItem="FB7-ok-234" firstAttribute="trailing" secondItem="w0Z-d1-8zq" secondAttribute="trailing" id="nCd-UH-Rwf"/>
+                            <constraint firstItem="bK2-fK-Kfa" firstAttribute="leading" secondItem="FB7-ok-234" secondAttribute="leading" constant="20" id="ol8-dt-6GT"/>
+                            <constraint firstItem="omU-yO-2Ws" firstAttribute="leading" secondItem="FB7-ok-234" secondAttribute="leading" constant="20" id="sLt-jy-hy3"/>
+                            <constraint firstItem="Ksy-qu-kQJ" firstAttribute="top" secondItem="omU-yO-2Ws" secondAttribute="bottom" constant="6" id="tyH-rM-JRi"/>
                             <constraint firstItem="Ksy-qu-kQJ" firstAttribute="leading" secondItem="FB7-ok-234" secondAttribute="leading" constant="20" id="vbe-Uf-rgf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FB7-ok-234"/>
                     </view>
                     <navigationItem key="navigationItem" title="Encode" id="D2M-WK-L2D"/>
                     <connections>
+                        <outlet property="encodeButton" destination="QgC-cD-qwR" id="dTj-Qe-9Ii"/>
+                        <outlet property="photoClear" destination="omU-yO-2Ws" id="ILX-ic-79S"/>
                         <outlet property="photoView" destination="Ksy-qu-kQJ" id="bMD-VB-1Lw"/>
+                        <outlet property="textClear" destination="bK2-fK-Kfa" id="wNM-cC-50K"/>
                         <outlet property="textView" destination="ip9-sK-N7G" id="LBx-us-EEW"/>
                         <outlet property="textViewHeight" destination="pja-c7-78c" id="gBD-tB-lBi"/>
                         <outlet property="textViewToPhoto" destination="7xW-k4-YVa" id="pqK-QX-Kkj"/>
@@ -107,7 +156,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1832" y="124"/>
+            <point key="canvasLocation" x="1831.8840579710147" y="123.88392857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gZ7-Bf-dli">
@@ -129,6 +178,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg3" width="320" height="568"/>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
 </document>
