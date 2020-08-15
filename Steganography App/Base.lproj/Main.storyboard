@@ -90,7 +90,8 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="encode:" destination="Udc-FP-7fP" eventType="touchUpInside" id="44p-Ia-QPF"/>
+                                    <action selector="encodeButtonPressed:" destination="Udc-FP-7fP" eventType="touchUpInside" id="mFo-U0-fWD"/>
+                                    <segue destination="Ckj-xl-Kw1" kind="show" identifier="encodeImageSegue" id="94J-wP-ma3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-fK-Kfa">
@@ -157,6 +158,39 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1831.8840579710147" y="123.88392857142857"/>
+        </scene>
+        <!--Encoded Image View Controller-->
+        <scene sceneID="e53-Wj-1wd">
+            <objects>
+                <viewController id="Ckj-xl-Kw1" customClass="EncodedImageViewController" customModule="Steganography_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dhv-82-6YA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ct3-8G-NVw">
+                                <rect key="frame" x="20" y="204" width="374" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="326" id="4po-RW-mmJ"/>
+                                    <constraint firstAttribute="width" constant="374" id="J2K-Sp-U7Q"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ct3-8G-NVw" firstAttribute="top" secondItem="AW0-r3-iYy" secondAttribute="top" constant="116" id="7O8-gl-7AR"/>
+                            <constraint firstItem="ct3-8G-NVw" firstAttribute="centerX" secondItem="AW0-r3-iYy" secondAttribute="centerX" id="FLe-g8-lQb"/>
+                            <constraint firstItem="AW0-r3-iYy" firstAttribute="trailing" secondItem="ct3-8G-NVw" secondAttribute="trailing" constant="20" id="s19-IQ-dRC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AW0-r3-iYy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kk8-jf-XMB"/>
+                    <connections>
+                        <outlet property="imageView" destination="ct3-8G-NVw" id="h2j-31-kkJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FtQ-jB-IsH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2710" y="126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gZ7-Bf-dli">

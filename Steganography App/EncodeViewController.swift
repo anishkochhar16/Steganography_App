@@ -23,17 +23,23 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     let placeholderMessage = "Enter message to hide..."
-    var photoSelected = false
+    var chosenPhoto = false
+    var enableEncoding = false //Bool { return (photoView.image != nil && !textView.text.isEmpty) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupButtons()
-        
+        photoView.image?.accessibilityIdentifier = "default photo"
         self.textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         setupTextView()
     }
     
+    // MARK: Encoding
+    @IBAction func encodeButtonPressed(_ sender: Any) {
+    }
+    
+    // MARK: Custom Methods
     func setupButtons() {
         // Both Clear buttons have a blur and a shadow
         photoClear.backgroundColor = .clear
@@ -65,16 +71,14 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         encodeButton.layer.cornerRadius = 5
         let blur3 = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         blur3.frame = encodeButton.bounds
-        blur3.isUserInteractionEnabled = true
+        blur3.isUserInteractionEnabled = false
         blur3.layer.cornerRadius = 5
         blur3.clipsToBounds = true
         encodeButton.addSubview(blur3)
         encodeButton.layer.shadowOpacity = 0.4
         encodeButton.layer.shadowOffset = CGSize(width: 3, height: 1)
         encodeButton.layer.shadowRadius = 5
-    }
-    
-    @IBAction func encode(_ sender: Any) {
+        encodeButton.isHidden = true
     }
     
     @objc func tapDone(sender: Any) {
@@ -90,8 +94,21 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.textView.text = self.placeholderMessage
             self.textView.textColor = .lightGray
         }
+    
+        checkIfShouldToggleEncodeButton()
         
         self.view.endEditing(true)
+    }
+    
+    func checkIfShouldToggleEncodeButton() {
+        enableEncoding = (photoView.image?.accessibilityIdentifier != "default photo" && textView.textColor != UIColor.lightGray && !textView.text.isEmpty)
+        if encodeButton.isHidden == enableEncoding {
+            if enableEncoding {
+                encodeButton.isHidden = false
+            } else {
+                encodeButton.isHidden = true
+            }
+        }
     }
     
     //MARK: Text View
@@ -103,7 +120,7 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         textView.textColor = .lightGray
     }
     
-    // MARK: Select TextView
+    // MARK: TextView Methods
     @IBAction func enlargeTextView(_ sender: UITapGestureRecognizer) {
         
         textView.becomeFirstResponder()
@@ -124,6 +141,7 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func clearTextView(_ sender: Any) {
         self.textView.text = ""
         self.textView.textColor = .black
+        checkIfShouldToggleEncodeButton()
     }
     
     
@@ -138,7 +156,8 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func clearPhoto(_ sender: Any) {
         photoView.image = UIImage(named: "defaultPhoto")
-        photoSelected = false
+        photoView.image?.accessibilityIdentifier = "default photo"
+        checkIfShouldToggleEncodeButton()
     }
     
 
@@ -149,20 +168,25 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { fatalError("Did not pick an image. Received \(info)") }
+    
         photoView.image = selectedImage
-        photoSelected = true
+        
+        checkIfShouldToggleEncodeButton()
 
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? EncodedImageViewController {
+            guard let selectedImage = photoView.image else { fatalError("No image in photo view") }
+            vc.image = selectedImage
+        } else {
+            print("Nah")
+        }
     }
-    */
-
 }
+
+
+

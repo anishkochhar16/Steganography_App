@@ -16,6 +16,7 @@
 		102C75C624E55B2800217EED /* Steganography_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C75C524E55B2800217EED /* Steganography_AppTests.swift */; };
 		102C75D124E5C75300217EED /* EncodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C75D024E5C75300217EED /* EncodeViewController.swift */; };
 		102C75D324E5EACC00217EED /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C75D224E5EACC00217EED /* TextViewExtension.swift */; };
+		1088324F24E895C8002D2F36 /* EncodedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088324E24E895C8002D2F36 /* EncodedImageViewController.swift */; };
 		773798B8C3A1BC9DE14E2316 /* Pods_Steganography_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D847D77009A0E40E0A0106A9 /* Pods_Steganography_AppTests.framework */; };
 		98BFEFE725F6F8AC7717807A /* Pods_Steganography_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB2DAA77C3C60D8F3B4E65D /* Pods_Steganography_App.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		102C75C724E55B2800217EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		102C75D024E5C75300217EED /* EncodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeViewController.swift; sourceTree = "<group>"; };
 		102C75D224E5EACC00217EED /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
+		1088324E24E895C8002D2F36 /* EncodedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedImageViewController.swift; sourceTree = "<group>"; };
 		2DB2DAA77C3C60D8F3B4E65D /* Pods_Steganography_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Steganography_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60327F41E6947EAC91940170 /* Pods-Steganography AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steganography AppTests.release.xcconfig"; path = "Target Support Files/Pods-Steganography AppTests/Pods-Steganography AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		62A80F13657CE26405C0674E /* Pods-Steganography App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steganography App.debug.xcconfig"; path = "Target Support Files/Pods-Steganography App/Pods-Steganography App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				102C75D224E5EACC00217EED /* TextViewExtension.swift */,
 				102C75B224E55B2300217EED /* IntroViewController.swift */,
 				102C75D024E5C75300217EED /* EncodeViewController.swift */,
+				1088324E24E895C8002D2F36 /* EncodedImageViewController.swift */,
 				102C75B424E55B2300217EED /* Main.storyboard */,
 				102C75B724E55B2800217EED /* Assets.xcassets */,
 				102C75B924E55B2800217EED /* LaunchScreen.storyboard */,
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1088324F24E895C8002D2F36 /* EncodedImageViewController.swift in Sources */,
 				102C75B324E55B2300217EED /* IntroViewController.swift in Sources */,
 				102C75AF24E55B2300217EED /* AppDelegate.swift in Sources */,
 				102C75D124E5C75300217EED /* EncodeViewController.swift in Sources */,
