@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+class EncodeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var textViewToTop: NSLayoutConstraint!
     @IBOutlet var textViewToPhoto: NSLayoutConstraint!
@@ -143,7 +143,9 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.textView.textColor = .black
         checkIfShouldToggleEncodeButton()
     }
-    
+}
+
+extension EncodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Select Photo
     @IBAction func selectPhoto(_ sender: UITapGestureRecognizer) {
@@ -160,7 +162,6 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         checkIfShouldToggleEncodeButton()
     }
     
-
     // MARK: ImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -182,6 +183,7 @@ class EncodeViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let vc = segue.destination as? EncodedImageViewController {
             guard let selectedImage = photoView.image else { fatalError("No image in photo view") }
             vc.image = selectedImage
+            vc.messageString = textView.text
         } else {
             print("Nah")
         }

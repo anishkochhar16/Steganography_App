@@ -62,5 +62,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to choose an image to embed in</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save image to your camera roll</string>
 </dict>
 </plist>
